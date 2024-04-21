@@ -12,18 +12,15 @@ const htmlRoute = require("./routes/htmlconnect.js")
 
 // indexRoute.use("/apidata", apiRoute);//./index.js/apidata/routes/apidata.js
 // indexRoute.use("/htmlconnect", htmlRoute);
-
 application.use(express.json());
 application.use(express.urlencoded({extended: true}));//url (api for CRUD and html for webpages) gives instructions 
 application.use(express.static("public"));//root for express, so start from the HTMLs
 application.use("/api", indexRoute);
 application.use("/", htmlRoute); //html pages
 //application.use("/apidata", apiRoute);
-
 // application.get("/", (req, res) => {
 //     res.sendFile(path.join(__dirname, "/public/index.js"));
 //   });
-
 application.listen(port, () => //do whatever follows
 console.log(`http://localhost:${port}`));
 

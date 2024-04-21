@@ -1,4 +1,4 @@
-const {readFromFile, readAndAppend, writeToFile} = require("../helpers/fsUtils");
+const {readFromFile, readAndAppend, writeToFile} = require("../helpers/fsUtils");//pulls functions from that file
 //running CRUD functions
 const apiApp = require('express').Router();//see diagnostics.js
 const { v4: uuidv4 } = require('uuid'); //this was updated from last year
@@ -12,7 +12,7 @@ const { v4: uuidv4 } = require('uuid'); //this was updated from last year
 
 apiApp.get("/", (req, res) => {     
     readFromFile("./db/db.json").then((data) => {
-        console.log(data);
+        console.log(data); //this is required to make it function?
         res.json(JSON.parse(data));
     });
 });
@@ -36,7 +36,6 @@ apiApp.post("/", (req, res) => {
 apiApp.delete("/:id", (req, res) => {
     const id = req.params.id;
     readFromFile("./db/db.json").then((data) => {
-        console.log(data);
     let newData = JSON.parse(data);
         newData = newData.filter(note => note.id != id)
         res.json(newData);
