@@ -11,39 +11,16 @@ const htmlRoute = require("./routes/htmlconnect.js")
 // Set up body parsing, static, and route middleware
 
 // indexRoute.use("/apidata", apiRoute);//./index.js/apidata/routes/apidata.js
-// indexRoute.use("/htmlconnect", htmlRoute);
-application.use(express.json());
+application.use(express.json());//enable JSON body parsing in an express() application. Translation:
+//(NEW EX.APP.)new instance of Express app().(ADD MID. PIPE.)add middleware to app's request handling pipeline(automatically parse JSON data, makes it available in req.body of the request object)
 application.use(express.urlencoded({extended: true}));//url (api for CRUD and html for webpages) gives instructions 
-application.use(express.static("public"));//root for express, so start from the HTMLs
-application.use("/api", indexRoute);
+//sets up middleware in an EX>APP to parse incoming request bodies. Translation:
+//NEW EX.APP.ADD MID. PIPE(tell Express to use this middleware for incoming requests to parse URL-encoded data, make it available in the req.body object of the request.)
+application.use(express.static("public"));//root for express, so start from the HTMLs.
+//serve all static files located in the "public" folder, make it accessible by clients through the specified route.
+application.use("/api", indexRoute);//sets up route in an express() app. to handle requests starting with "/api" by importing & using the routes defined in the "./routes/index.js" file. Translation:
+//NEW EX.APP.ADD MID. PIPE("base path for the middleware", import this route from line 8)
 application.use("/", htmlRoute); //html pages
-//application.use("/apidata", apiRoute);
-// application.get("/", (req, res) => {
-//     res.sendFile(path.join(__dirname, "/public/index.js"));
-//   });
 application.listen(port, () => //do whatever follows
 console.log(`http://localhost:${port}`));
 
-// addEventListener("click", function(event) {
-//     if (event.target.href === "http://localhost:5009/api/Develop/public/notes") {
-//         window.location.href = "http://localhost:5009/api/Develop/public/notes";
-//     }
-// });
-// addEventListener (event) { 
-//     if (event === "/notes")
-//     window.location.href = "http://localhost:5009/api/Develop/public/notes"
-// };
-// const express = require(‘express’);
-// const apiRoutes = require(‘./routes/apiRoutes’);
-// const htmlRoutes = require(‘./routes/htmlRoutes’);
-// // Initialize the app and create a port
-// const app = express();
-// const PORT = process.env.PORT || 3001;
-// // Set up body parsing, static, and route middleware
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.static(‘public’));
-// app.use(‘/api’, apiRoutes);
-// app.use(‘/’, htmlRoutes);
-// // Start the server on the port
-// app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
