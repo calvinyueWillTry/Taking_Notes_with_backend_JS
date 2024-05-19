@@ -21,17 +21,13 @@ const show = (elem) => {
 };
 
 // Hide an element
-// Hide an element
 const hide = (elem) => {
   elem.style.display = 'none';
 };
 
 // activeNote is used to keep track of the note in the textarea
-// activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-const getNotes = () => //404 not found 
-  fetch('/api/notes', { //GET request, retrieve notes from /api/notes
 const getNotes = () => //404 not found 
   fetch('/api/notes', { //GET request, retrieve notes from /api/notes
     method: 'GET',
@@ -55,12 +51,9 @@ const deleteNote = (id) =>
     headers: {
       'Content-Type': 'application/json'
     }
-    }
   });
 
 const renderActiveNote = () => {//hide the save and delete buttons
-  hide(saveNoteBtn);
-  hide(clearBtn);
   hide(saveNoteBtn);
   hide(clearBtn);
 
@@ -75,7 +68,6 @@ const renderActiveNote = () => {//hide the save and delete buttons
     noteTitle.removeAttribute('readonly');//delete note title in notelist area
     noteText.removeAttribute('readonly');//delete note text in notelist area
     noteTitle.value = '';//converts it into empty string
-    noteText.value = '';
     noteText.value = '';
   }
 };
@@ -104,8 +96,6 @@ const handleNoteDelete = (e) => {
   }
 
   deleteNote(noteId).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -196,12 +186,10 @@ const renderNoteList = async (notes) => {//awaits the notes.json() method to con
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);//line 31 then 131
 //404 not found? 
-//404 not found? 
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);//save button, goes to 75
   newNoteBtn.addEventListener('click', handleNewNoteView);//new note, goes to 112
   clearBtn.addEventListener('click', renderActiveNote);//delete button, goes to 56
-  noteForm.addEventListener('input', handleRenderBtns);//button to hide notes from note title/text (119)
   noteForm.addEventListener('input', handleRenderBtns);//button to hide notes from note title/text (119)
 }
 
