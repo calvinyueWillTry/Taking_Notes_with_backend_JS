@@ -20,17 +20,16 @@ const show = (elem) => {
   elem.style.display = 'inline';
 };
 
-//Hide an element. Witout this, can't view notes that have been posted.
+// Hide an element
 const hide = (elem) => {
   elem.style.display = 'none';
 };
 
-// activeNote is used to keep track of the note in the textarea, and fetch new entries
+// activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-//404 not found 
-const getNotes = () => 
-  fetch('/api/notes', { //GET request, retrieve current and entered notes from /api/notes
+const getNotes = () => //404 not found 
+  fetch('/api/notes', { //GET request, retrieve notes from /api/notes
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -51,12 +50,12 @@ const deleteNote = (id) =>
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
-    } // indicates that the content being sent or received is JSON data
+    }
   });
 
 const renderActiveNote = () => {//hide the save and delete buttons
-  hide(saveNoteBtn);//necessary in order to allow the save button to work
-  hide(clearBtn);//without hiding, save won't work
+  hide(saveNoteBtn);
+  hide(clearBtn);
 
   if (activeNote.id) {
     show(newNoteBtn);//display
@@ -69,7 +68,7 @@ const renderActiveNote = () => {//hide the save and delete buttons
     noteTitle.removeAttribute('readonly');//delete note title in notelist area
     noteText.removeAttribute('readonly');//delete note text in notelist area
     noteTitle.value = '';//converts it into empty string
-    noteText.value = '';//converts it into empty string
+    noteText.value = '';
   }
 };
 
@@ -97,8 +96,8 @@ const handleNoteDelete = (e) => {
   }
 
   deleteNote(noteId).then(() => {
-    getAndRenderNotes();//line 188
-    renderActiveNote();//line 57
+    getAndRenderNotes();
+    renderActiveNote();
   });
 };
 
@@ -186,12 +185,13 @@ const renderNoteList = async (notes) => {//awaits the notes.json() method to con
 
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);//line 31 then 131
+//404 not found? 
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);//save button, goes to 75
   newNoteBtn.addEventListener('click', handleNewNoteView);//new note, goes to 112
   clearBtn.addEventListener('click', renderActiveNote);//delete button, goes to 56
-  noteForm.addEventListener('input', handleRenderBtns);//renders the new note, goes to 120
-  //button to hide notes from note title/text (119)
+  noteForm.addEventListener('input', handleRenderBtns);//button to hide notes from note title/text (119)
 }
 
-getAndRenderNotes();//calls line 188
+getAndRenderNotes();//404 not found?
+//http://localhost:5009/notes

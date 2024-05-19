@@ -2,13 +2,6 @@ const {readFromFile, readAndAppend, writeToFile} = require("../helpers/fsUtils")
 //running CRUD functions
 const apiApp = require('express').Router();//see diagnostics.js
 const { v4: uuidv4 } = require('uuid'); //this was updated from last year
-// const routeIndex = require("./index");
-// const routeHTML = require("./htmlconnect");
-// const indexMain = require("../public/assets/js/index");
-//GET to retrieve info from db.json
-// addEventListener ("click" saveTheNote); 
-// function saveTheNote (saveNote, saveNoteBtn) {
-// };
 
 apiApp.get("/", (req, res) => {     
     readFromFile("./db/db.json").then((data) => {
