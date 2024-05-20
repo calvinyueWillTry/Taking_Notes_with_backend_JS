@@ -11,4 +11,5 @@ To delete it, it runs deleteNote (line 48), then renders that with lines 98 and 
 <img width="1280" alt="Screen Shot 2024-05-18 at 9 49 32 PM" src="https://github.com/calvinyueWillTry/Taking_Notes_with_backend_JS/assets/158237430/96a0ba95-ad13-4de0-b8dd-8056d8cd89d2">
 To view the current notes that have been made, click on a specific subject on the left side, then it calls the getNotes on line  31, to allow viewing. getAndRenderNotes (line 187) refreshes and recalls the page, depending on what's been done. 
 <img width="1280" alt="Screen Shot 2024-05-18 at 9 49 40 PM" src="https://github.com/calvinyueWillTry/Taking_Notes_with_backend_JS/assets/158237430/8fcdd6bd-2636-48e8-b342-c8e1d89247fa">
+In the terminal, it shows the sequences of numbers called to produce these notes, and CRUD treatment.
 <img width="1280" alt="Screen Shot 2024-05-19 at 9 51 26 PM" src="https://github.com/calvinyueWillTry/Taking_Notes_with_backend_JS/assets/158237430/25131089-b0ed-4120-8c47-1099c9781197">
